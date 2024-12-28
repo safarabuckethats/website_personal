@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safara Hats - Happy Hat, Happy Day</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background-color: #ffdc73;
+            color: #333;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        header p {
+            font-size: 1.2em;
+            margin: 5px 0 0;
+        }
+        nav {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #ff914d;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ff6f00;
+        }
+        section {
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+        section.active {
+            display: block;
+        }
+        .product img {
+            width: 300px;
+            margin: 20px 0;
+            border-radius: 12px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #ffdc73;
+            color: #333;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #ff914d;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #ff6f00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Safara Hats</h1>
+        <p>Happy Hat, Happy Day</p>
+    </header>
+    <nav>
+        <a href="#" data-target="home">Beranda</a>
+        <a href="#" data-target="product">Produk</a>
+        <a href="#" data-target="contact">Kontak</a>
+    </nav>
+    <section id="home" class="active">
+        <h2>Selamat Datang di Safara Hats</h2>
+        <p>Nikmati gaya stylish dengan koleksi bucket hat kami. Happy Hat, Happy Day!</p>
+    </section>
+    <section id="product">
+        <h2>Produk Kami</h2>
+        <div class="product">
+            <img id="productImage" src="https://via.placeholder.com/300" alt="Produk">
+            <form>
+                <label for="upload">Upload Foto Produk:</label><br>
+                <input type="file" id="upload" accept="image/*" onchange="previewImage(event)">
+                <br>
+                <button type="button" onclick="alert('Foto Produk Berhasil Diupload!')">Submit</button>
+            </form>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Hubungi Kami</h2>
+        <p>Email: safarabuckethats@example.com</p>
+        <p>Phone: +62 877 777 777 77</p>
+        <p>Address: Jl. Bahagia No. 123, Pontianak</p>
+    </section>
+    <footer>
+        <p>&copy; 2024 Savara Hats. All rights reserved.</p>
+    </footer>
+    <script>
+        const links = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section');
+
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = link.getAttribute('data-target');
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(target).classList.add('active');
+            });
+        });
+
+        function previewImage(event) {
+            const image = document.getElementById('productImage');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>
